@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCustomersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCustomersLabel_customersId}" for="customersId" />
+                    <h:inputText id="customersId" value="#{customersController.selected.customersId}" title="#{bundle.EditCustomersTitle_customersId}" required="true" requiredMessage="#{bundle.EditCustomersRequiredMessage_customersId}"/>
+                    <h:outputLabel value="#{bundle.EditCustomersLabel_firstname}" for="firstname" />
+                    <h:inputText id="firstname" value="#{customersController.selected.firstname}" title="#{bundle.EditCustomersTitle_firstname}" required="true" requiredMessage="#{bundle.EditCustomersRequiredMessage_firstname}"/>
+                    <h:outputLabel value="#{bundle.EditCustomersLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{customersController.selected.lastname}" title="#{bundle.EditCustomersTitle_lastname}" required="true" requiredMessage="#{bundle.EditCustomersRequiredMessage_lastname}"/>
+                    <h:outputLabel value="#{bundle.EditCustomersLabel_street}" for="street" />
+                    <h:inputText id="street" value="#{customersController.selected.street}" title="#{bundle.EditCustomersTitle_street}" required="true" requiredMessage="#{bundle.EditCustomersRequiredMessage_street}"/>
+                    <h:outputLabel value="#{bundle.EditCustomersLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{customersController.selected.phone}" title="#{bundle.EditCustomersTitle_phone}" />
+                </h:panelGrid>
+                <h:commandLink action="#{customersController.update}" value="#{bundle.EditCustomersSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCustomersViewLink}"/>
+                <br />
+                <h:commandLink action="#{customersController.prepareList}" value="#{bundle.EditCustomersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCustomersIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
